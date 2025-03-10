@@ -1,0 +1,70 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+.formGroup h2 {
+    width: 30rem;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inputField {
+  width: 100px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.termsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.textAreaContainer {
+  margin-top: 1rem;
+}
+
+.textArea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+
+.buttonWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.buttonWrapper button {
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}

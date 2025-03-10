@@ -1,0 +1,147 @@
+.addForm {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 5rem;
+    border-radius: 8px;
+    background-color: var(--bg-info);
+}
+
+.inputField {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.upload {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 1rem;
+}
+
+.formGroup label {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--foreground);
+}
+.formGroup input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #555
+}
+.addressSelect {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #f8f9fa;
+}
+
+.upload .formGroup input {
+    border: none;
+}
+.radioGroup {
+    display: flex;
+    gap: 15px;
+}
+
+.radioLabel {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.error {
+    font-size: 12px;
+    color: red;
+}
+.title {
+    margin: 2rem 0;
+    color: var(--foreground);
+}
+
+.description {
+    width: 20rem !important;
+    height: 10rem;
+}
+
+
+
+
+
+
+.uploadField > div{
+    width: 18rem;
+    aspect-ratio: 1 / 1;
+}
+
+
+
+.checkboxGrid {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 2rem;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.col label {
+    display: flex;
+    gap: .5rem
+}
+
+
+.buttonWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.buttonWrapper button {
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .inputField {
+        flex-direction: column;
+    }
+    .upload {
+    display: flex;
+    flex-direction: column;
+    }
+    .uploadField > div{
+    width: 21rem;
+}
+.formGroup label {
+    text-align: center;
+}
+.description {
+    width: 100% !important;
+}
+
+
+}

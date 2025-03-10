@@ -1,0 +1,33 @@
+Full data with details
+
+{
+    "id": "1",
+    "username": "John Doe",
+    "password": "$2a$10$2vradccOv2.96alSwtk3oeBugicTBuRUOXkosrK4TRJWDF08A9jcC",
+    "name": "John Doe",
+    "dateOfBirth": "1990-05-15",
+    "nationalID": "1234567890",
+    "phone": "+1234567890",
+    "email": "johndoe@example.com",
+    "address": {
+        "city": "New York",
+        "district": "New York",
+        "ward": "Brooklyn",
+        "houseNumberStreet": "123 New Road, F-Ville2"
+    },
+    "drivingLicense": "DL-987654321",
+    "wallet": 150.75,
+    "role": "carowner"
+}
+
+After signing up, only include these
+
+{
+    "id": "7",
+    "name": "Bob",
+    "email": "user2@gmail.com",
+    "password": "$2a$10$2vradccOv2.96alSwtk3oeBugicTBuRUOXkosrK4TRJWDF08A9jcC"
+    "phone": "+1234567890",
+    "role": "carowner"
+}
+

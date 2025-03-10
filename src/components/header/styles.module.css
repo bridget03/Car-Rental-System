@@ -1,0 +1,197 @@
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-shadow: 0px 4px 10px var(--shadow);
+  padding: 1rem 0;
+
+}
+
+.topHeader {
+  position: absolute;
+  top: 0;
+}
+
+.fixedHeader {
+  position: fixed;
+  top: -83px;
+  background-color: var(--bg-info);
+  z-index: 999;
+
+  transform : translateY(83px);
+  transition: transform 0.7s ease;
+  backdrop-filter: blur(25px);
+
+}
+
+.headerContainer {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3.5rem;
+}
+
+
+.logoContainer {
+  margin-right: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.logoText {
+  color: var(--foreground);
+  margin-left: 10px;
+}
+
+.navbar {
+  display: flex;
+}
+
+.navList {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 16px;
+  color: var(--foreground);
+  font-weight: bold;
+  white-space: nowrap;
+  &:hover {
+    color: gray;
+  }
+}
+
+.navButton {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--foreground);
+
+  transition: color 0.3s;
+}
+
+.navButton:hover {
+  color: gray;
+}
+
+.dropdownContainer {
+  position: relative;
+  width: 100%;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  margin: 5px 0 0;
+  padding: 5px 0;
+  min-width: 150px;
+  z-index: 9999;
+  width: max-content;
+}
+
+.dropdownItem {
+  padding: 10px 15px;
+  display: block;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+  background: none;
+  width: 100%;
+  text-align: left;
+  border: none;
+}
+
+.dropdownItem:hover {
+  background: #f5f5f5;
+}
+
+@media (max-width: 991px) {
+  .containerCustom {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+
+  .navbar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .logoText {
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  .containerCustom {
+    gap: 2rem;
+    padding: 0 3rem;
+  }
+  .navList {
+    gap: 2rem;
+  }
+  .navLink,
+  .navButton {
+    font-size: 14px;
+  }
+}
+@media (max-width: 375px) {
+  .containerCustom {
+    padding: 0 2rem;
+  }
+  .navList {
+    gap: 2rem;
+  }
+  .navLink,
+  .navButton {
+    font-size: 11px;
+  }
+  .logoContainer img {
+    width: 30;
+    height: 30;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logoDark {
+    display: flex;
+  }
+  .logoLight {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .logoDark {
+    display: none;
+  }
+  .logoLight {
+    display: flex;
+  }
+}

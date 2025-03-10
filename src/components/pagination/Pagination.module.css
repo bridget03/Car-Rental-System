@@ -1,0 +1,83 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: space-between;
+}
+
+.pagination-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    justify-content: center;
+    align-items: center;
+}
+.buttonStyle {
+    padding: 0;
+    min-width: 2.5rem;
+    max-width: 2.5rem;
+    aspect-ratio: 1/1;
+    border: 1px solid transparent;
+    background-color: var(--background);
+    color: var(--foreground);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        background-color: rgb(from var(--primary) r g b / 0.1);
+    }
+}
+
+.activeStyle {
+    /* border: 1px solid rgb(from var(--foreground) r g b / 0.3); */
+    cursor: default;
+    background-color: var(--primary);
+    color: var(--white-text);
+    &:hover {
+        background-color: var(--primary);
+    }
+}
+
+.disabledStyle {
+    pointer-events: none;
+    color: rgb(from var(--foreground) r g b / 0.2);
+}
+
+.items-per-page-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.selectBox {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(from var(--foreground) r g b / 0.3);
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    outline: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+        outline: 2px solid var(--primary);
+    }
+    option {
+        background-color: var(--background);
+        margin: none;
+        border: none;
+    }
+}
+
+.selectBox option:hover {
+    color: red;
+}
+
+.secondaryText {
+    color: var(--secondary);
+}

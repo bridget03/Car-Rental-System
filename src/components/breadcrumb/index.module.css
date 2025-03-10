@@ -1,0 +1,26 @@
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    color: var(--secondary);
+}
+
+.breadcrumbItem {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1rem 0.25rem;
+}
+
+.breadcrumbLink {
+    text-decoration: none;
+    transition: all 0.2s linear;
+    color: inherit;
+    &:hover {
+        color: var(--foreground);
+    }
+}
+
+.currentPage {
+    color: var(--primary);
+    text-transform: capitalize;
+}

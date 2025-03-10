@@ -1,0 +1,120 @@
+.faqContainer {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.highlight {
+  color: var(--primary);
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItemContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItem {
+  width: 100%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  color: var(--foreground);
+  text-align: left;
+}
+
+.faqItem:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.faqItem.active {
+  background: var(--foreground) !important;
+  border-color: var(--foreground) !important;
+  color: var(--background) !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.question {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.arrow {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
+.arrowActive {
+  transform: rotate(-90deg);
+}
+
+.answerContainer {
+  background: var(--background);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+.answer {
+  padding: 1rem 1.5rem;
+  color: var(--text-white);
+  line-height: 1.5;
+  font-size: 1.125rem;
+}
+
+.faqItem:first-child.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--foreground);
+}
+.faqItem.active:hover {
+  border-color: var(--primary) !important;
+}
+.faqItem:not(.active):hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .faqContainer {
+    max-width: none;
+    padding: 1rem;
+  }
+}

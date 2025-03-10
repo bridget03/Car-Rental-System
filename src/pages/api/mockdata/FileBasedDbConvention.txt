@@ -1,0 +1,46 @@
+paths:
+
+src\utils\mockdataPath >> Paths for data
+src\utils\APIsProtection >> Path để bảo vệ api nếu như tác vụ cần sử dụng đến role
+
+.gitignore >> thêm path vào gitignore để chống conflict (chưa xử lý)
+
+====
+>>> Muốn xem mẫu sử dụng tất cả cái này thì xem ở src\pages\api\users\index.ts
+0. Thêm path của data vào src\utils\mockdataPath, sau đó export
+
+const usersPath = path.join(process.cwd(), "src/pages/api/mockdata/users.json");
+export { usersPath };
+
+1. import fs, path của data:
+import { promises as fs } from "fs";
+import { usersPath } from "@/utils/mockdataPath";
+
+2. Đọc file trong hàm handler (để khi có update sẽ tự cập nhật nếu có request mới)
+...
+const file = await fs.readFile(usersPath, "utf8");
+const users = JSON.parse(file);
+...
+
+3. Ghi lại file (nếu như có tác vụ phải lưu lại thông tin)
+...
+await fs.writeFile(usersPath, JSON.stringify(users, null, 2), "utf8");
+...
+
+4. Nếu cần sử dụng đến role, thì:
+4.1. Khi import:
+import withAuth from "@/utils/APIsProtection";
+
+4.2. Khi export:
+
+export default await withAuth(handler);
+
+Nếu cần bảo vệ api ko cho bên thứ 3 k đăng nhập được sử dụng thì truyền thêm role: (Tác vụ backend, k cần thiết phải làm)
+export default await withAuth(handler, ["carOwner"]);
+
+4.3. Lấy role ra từ req:
+const { role } = (req as unknown as { user: any }).user;
+
+>>> Tại sao nên lấy role như này thay vì truyền qua body hay GET request?
+>>> Bảo mật hơn :)
+

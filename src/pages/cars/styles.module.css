@@ -1,0 +1,48 @@
+.container {
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 3rem;
+  }
+  .heading span {
+    color: var(--primary);
+  }
+  
+  .card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .card.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 1024px) {
+    .grid {
+      padding: 1.5rem;
+    }
+    .heading {
+      text-align: center;
+    }
+  }
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

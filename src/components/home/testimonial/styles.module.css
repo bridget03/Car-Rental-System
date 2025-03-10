@@ -1,0 +1,119 @@
+.mainContainer {
+  padding: 6rem 1.5rem;
+}
+
+.testimonial {
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  border-radius: 30px;
+  background: var(--background);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  color: var(--foreground);
+}
+
+.heading span {
+  color: var(--primary);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--background);
+  gap: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow);
+  padding: 0.75rem 0.25rem;
+}
+
+.boxImage {
+  width: 100px;
+  min-width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxImage img {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+}
+
+.boxBody {
+  text-align: left;
+}
+
+.boxTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+}
+
+.boxContent {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--third);
+}
+
+@media (max-width: 1024px) {
+  .testimonial {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2.4rem;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    padding: 1.5rem;
+  }
+
+  .boxImage {
+    width: 75px;
+    height: 75px;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+}

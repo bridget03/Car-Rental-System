@@ -1,0 +1,238 @@
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.rentButton {
+  background-color: var(--primary);
+  color: var(--foreground);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.rentButton:hover {
+  background-color: #ffa114;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.leftColumn {
+  position: relative;
+}
+
+.basicStats {
+  background-color: var(--bg-info);
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.status {
+  margin-top: 16px;
+  text-align: center;
+}
+.statusSelect {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: var(--foreground);
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 120px;
+}
+.statusSelect option[value="available"] {
+  color: lightgreen;
+}
+
+.statusSelect option[value="stopped"] {
+  color: red;
+}
+.statusSelect option {
+  padding: 0.5rem;
+}
+
+.available {
+  color: #22c55e;
+  /* background-color: #dcfce7; */
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.unavailable {
+  color: #ef4444;
+  background-color: #fee2e2;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--primary);
+  margin-bottom: 24px;
+}
+
+.tabContent {
+  min-height: 400px;
+  padding: 24px;
+  background-color: var(--bg-info);
+  /* border-radius: 0 0 8px 8px; */
+  border-radius: 8px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+    font-size: 1.5rem;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: var(--bg-info-900);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.modalMessage {
+  margin-bottom: 1.5rem;
+  color: var(--foreground);
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.modalCancel {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background: var(--background);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modalCancel:hover {
+  background-color: #f3f4f6;
+}
+
+.modalConfirm {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: var(--primary);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.modalConfirm:hover {
+  opacity: 0.9;
+}
+
+.customDropdown {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.dropdownToggle {
+  min-width: 109px;
+  width: fit-content;
+  /* padding: 8px 12px; */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: var(--foreground);
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 109px;
+  background-color: var(--foreground);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  margin-top: 2px;
+}
+
+.dropdownItem {
+  padding: 0.25rem;
+  cursor: pointer;
+  /* margin-right: 1rem; */
+}
+
+.dropdownItem:hover {
+  background-color: #f5f5f5;
+}
+
+.available {
+  color: green;
+  font-weight: bold;
+}
+
+.stopped,
+.unavailable {
+  color: red;
+  font-weight: bold;
+  padding: 0.5rem;
+}

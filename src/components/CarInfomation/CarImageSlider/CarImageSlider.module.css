@@ -1,0 +1,129 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    &:hover {
+        .indicators {
+            opacity: 1;
+        }
+    }
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 100%;
+
+    &:hover {
+        .navButton {
+            display: flex;
+        }
+    }
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+.image.next {
+    transform: translateX(100%);
+    animation: slideFromRight 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.image.prev {
+    transform: translateX(-100%);
+    animation: slideFromLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--foreground);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.568);
+    color: var(--background);
+}
+
+.navButton:hover {
+    background-color: var(--primary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: var(--foreground);
+}
+
+.prevButton {
+    left: 16px;
+}
+
+.nextButton {
+    right: 16px;
+}
+
+.indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: -2.5rem auto 0;
+    position: relative;
+    background-color: black;
+    width: fit-content;
+    padding: 0.5rem 0.5rem;
+    border-radius: 999px;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.indicator {
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.indicator.active {
+    background-color: var(--primary);
+    transform: scale(1.2);
+    width: 0.4rem;
+    height: 0.4rem;
+}
+
+@media (max-width: 768px) {
+    .navButton {
+        display: none;
+    }
+}

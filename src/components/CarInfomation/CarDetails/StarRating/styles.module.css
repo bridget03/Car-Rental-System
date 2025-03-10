@@ -1,0 +1,43 @@
+.ratings {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.starContainer {
+  display: flex;
+  position: relative;
+  color: var(--forebackground);
+  font-size: 1.5rem;
+}
+.star {
+  color: var(--forebackground);
+  color: white;
+  text-shadow: 0px 0px 1px black, 0px 0px 2px black;
+}
+
+.starBackground {
+  display: flex;
+  position: absolute;
+  top: 0;
+
+  left: 0;
+  overflow: hidden;
+  .star {
+    color: #ffd700;
+    text-shadow: 0px 0px 1px black, 0px 0px 2px #ffd700;
+  }
+}
+
+.ratingText {
+  margin-left: 10px;
+  margin-top: 0.25rem;
+  color: var(--foreground);
+  font-size: 14px;
+}
+.noRating {
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+  color: var(--foreground);
+}

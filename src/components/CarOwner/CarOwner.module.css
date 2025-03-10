@@ -1,0 +1,234 @@
+.container {
+  background-color: var(--background);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  .header {
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+
+    .title {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      gap: 0.5rem;
+      font-size: 22px;
+    }
+
+    .icon {
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+      border: 1px solid black;
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.875rem;
+    }
+
+    .description {
+      margin: 1rem 0;
+      font-size: 16px;
+    }
+  }
+}
+
+.section {
+  background: var(--bg-info-900);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.money {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 2rem;
+  .titleMoney {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--foreground);
+    margin-bottom: 1.5rem;
+  }
+
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+
+    .featureCard {
+      display: flex;
+      align-items: start;
+      padding: 1rem;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: var(--bg-info-700);
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .iconMoney {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-right: 1rem;
+      }
+
+      &:hover .iconMoney {
+        transform: scale(1.1);
+      }
+
+      .blueIcon {
+        color: #2563eb;
+      }
+
+      .greenIcon {
+        color: #16a34a;
+      }
+
+      .purpleIcon {
+        color: #7c3aed;
+      }
+
+      .featureTitle {
+        font-weight: 600;
+        color: var(--foreground);
+      }
+
+      .featureText {
+        font-size: 0.875rem;
+        color: var(--foreground);
+      }
+    }
+  }
+
+  .gridSection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    .infoCard {
+      background: var(--bg-info-900);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 1.5rem;
+      color: var(--background);
+    }
+
+    .infoTitle {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--foreground);
+      margin-bottom: 1rem;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .listItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    color: var(--foreground);
+  }
+
+  .listIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.75rem;
+    color: var(--primary);
+  }
+
+  .linkGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .linkItem {
+    background: var(--bg-info-700);
+    padding: 0.75rem;
+    border-radius: 6px;
+    text-align: center;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: var(--foreground);
+  }
+  /* 
+  .linkItem:hover {
+    background: #dbeafe;
+  } */
+}
+
+.featureCard.blue {
+  background: rgba(239, 246, 255, 1);
+}
+
+.featureCard.green {
+  background: rgba(240, 253, 244, 1);
+}
+
+.featureCard.purple {
+  background: rgba(250, 245, 255, 1);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.ctaButton {
+  background: var(--primary);
+  color: var(--foreground);
+  font-size: 1.25rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
+  border: none;
+}
+/* 
+.ctaButton:hover {
+  background: #1d4ed8;
+} */
+
+.buttonIcon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .section {
+    .main {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, auto);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    .main {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(6, auto);
+    }
+  }
+  .gridSection {
+    .linkGrid {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(4, auto);
+    }
+  }
+}

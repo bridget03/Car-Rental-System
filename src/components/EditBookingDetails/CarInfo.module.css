@@ -1,0 +1,172 @@
+.container {
+    width: 100%;
+
+    background: var(--background);
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    h1 {
+        margin-bottom: 1rem;
+    }
+}
+
+.responsiveCotainer {
+    display: flex;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.formGroupContainer {
+    display: flex;
+    gap: 1.25rem;
+}
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    border: 1px solid var(--border);
+    padding: 2rem 2.5rem 4rem;
+    border-radius: 0.5rem;
+}
+
+.formGroupHeader {
+    margin-bottom: 1rem;
+    p {
+        font-size: 1.25rem;
+        margin: 0;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .iconStyle {
+        color: var(--primary);
+    }
+    .divider {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-bottom: none;
+    }
+}
+
+.formCol {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1rem 5rem;
+}
+
+.cell {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* bảng */
+
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+}
+.tableDocument {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid var(--border);
+    }
+    th {
+        background-color: var(--primary);
+        color: white;
+        font-weight: bold;
+    }
+    tbody tr:nth-child(even) {
+        background-color: rgba(from var(--foreground) r g b / 0.05);
+    }
+    tbody tr:hover {
+        background-color: rgba(from var(--primary) r g b / 0.2);
+    }
+}
+
+.checkboxGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1rem;
+
+    .labelFunction {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: bold;
+        background-color: rgba(from var(--foreground) r g b / 0.05);
+        border: 1px solid var(--border);
+
+        p {
+            display: flex;
+            gap: 1ch;
+        }
+    }
+
+    .checkMark {
+        color: var(--success);
+    }
+
+    .checked {
+        .iconStyle {
+            color: var(--primary);
+        }
+    }
+
+    .unChecked {
+        opacity: 0.2;
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+}
+@media (max-width: 768px) {
+    .responsiveCotainer {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .formGroupContainer {
+        display: flex;
+        gap: 1.25rem;
+        flex-direction: column;
+    }
+
+    .formGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        gap: 1rem;
+    }
+
+    .checkboxGroup {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 1rem;
+    }
+}

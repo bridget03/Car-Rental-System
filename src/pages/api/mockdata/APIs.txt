@@ -1,0 +1,168 @@
+- Auth:
+  POST
+  http://localhost:3000/api/auth/register
+  {
+      "name": "Bob",
+      "email": "user5@gmail.com",
+      "password": "@Aa123456789",
+      "role": "carowner"
+  }
+
+- Forgot-password:
+  ==> user request forgot-password > server send email with query > then server handle 
+  ==> expected pages: forgot-password, reset-password
+
+  POST
+  http://localhost:3000/api/auth/forgot-password
+    >>> Generate a token, which can be use to check if link is valid or not
+    {
+      "email": "ndchinh2003@gmail.com"
+    }
+
+  GET 
+  http://localhost:3000/api/auth/reset-password?token=(getfromquery)&email=(getfromquery)
+    >>> Check if link is valid or not, this is served to render UI conditionally.
+        if error, use messages.ME006 (@util/messageList), 
+        if valid, render reset password UI
+
+  POST
+  http://localhost:3000/api/auth/reset-password
+    >>> Reset password request.
+    {
+      "token": (get from query)
+      "email": (get from query)
+      "newPassword":
+    }
+
+- Edit profile:
+  GET
+  http://localhost:3000/api/users
+
+  PUT
+  http://localhost:3000/api/users
+
+    {
+      "name": "John Doe",
+      "dateOfBirth": "1990-05-15",
+      "phone": "+1234567890",
+      "nationalID": "123456789",
+      "drivingLicense": "license.jpg",
+      "address": {
+        "city": "New York",
+        "district": "Manhattan",
+        "ward": "Central",
+        "houseNumberStreet": "123 Main Street"
+      }
+    }
+
+- Cloudinary signature:
+  GET
+  http://localhost:3000/api/sign-cloudinary-params?folder="rentcar/all"
+
+- bookings
+  GET
+  http://localhost:3000/api/bookings/available?pickupDate=2025-02-20T09:01&dropOffDate=2025-02-20T09:02&location=Hoan%20Kiem&page=1&limit=6&carBrand=Madara
+
+  POST
+  http://localhost:3000/api/bookings/available/
+
+  GET
+  http://localhost:3000/api/bookings/available/1?pickupDate=2025-02-18T10:00&dropOffDate=2025-02-19T18:00
+
+  POST
+  http://localhost:3000/api/bookings
+    {
+        "carId": "1",
+        "pickupDate": "2025-02-20T10:00",
+        "dropOffDate": "2025-02-22T18:00",
+        "pickupLocation": "Cau Giay, Hanoi",
+        "driverInformation": {
+          "name": "Nguyen Van A",
+          "phone": "+0987654321",
+          "nationalID": "123456789",
+          "dateOfBirth": "1990-05-15",
+          "email": "nguyenvana@example.com",
+          "drivingLicense": "0123456789",
+          "address": {
+            "city": "Hanoi",
+            "district": "Hoan Kiem",
+            "ward": "Hang Trong",
+            "houseNumberStreet": "12 Ly Thai To"
+          }
+        },
+        "renterInformation": {
+          "name": "Tran Thi B",
+          "phone": "+0912345678",
+          "nationalID": "987654321",
+          "dateOfBirth": "1988-08-10",
+          "email": "tranthib@example.com",
+          "drivingLicense": "0123456789",
+          "address": {
+            "city": "Hanoi",
+            "district": "Hoan Kiem",
+            "ward": "Hang Trong",
+            "houseNumberStreet": "12 Ly Thai To"
+          }
+        },
+        "paymentMethod": "wallet"
+    }
+
+  PUT
+  http://localhost:3000/api/bookings
+    {
+        "driverInformation": {
+            "name": "Nguyen Van A",
+            "phone": "+0987654321",
+            "nationalID": "123456789",
+            "dateOfBirth": "1990-05-15",
+            "email": "abc@gmail.com",
+            "drivingLicense": "0123456789",
+            "address": {
+                "city": "Hanoi",
+                "district": "Hoan Kiem",
+                "ward": "Hang Trong",
+                "houseNumberStreet": "12 Ly Thai To"
+            }
+        },
+        "renterInformation": {
+            "name": "Tran Thi B",
+            "phone": "+0912345678",
+            "nationalID": "987654321",
+            "dateOfBirth": "1988-08-10",
+            "email": "tranthib@example.com",
+            "drivingLicense": "1010101010",
+            "address": {
+                "city": "Hanoi",
+                "district": "Hoan Kiem",
+                "ward": "Hang Trong",
+                "houseNumberStreet": "12 Ly Thai To"
+            }
+        }
+    }
+
+  POST
+  http://localhost:3000/api/bookings/cancel/[id]
+
+  POST
+  http://localhost:3000/api/bookings/returncar/[id]
+  
+- wallet:
+  POST
+  http://localhost:3000/api/wallet/topup
+    {
+        "amount": "123"
+    }
+
+  POST
+  http://localhost:3000/api/wallet/withdraw
+    {
+        "amount": "123"
+    }
+
+Folders:
+public/ → Chứa các tệp tĩnh (ví dụ: hình ảnh, favicon).
+src/components/ → Chứa các thành phần giao diện dùng chung và giao diện của page.
+src/layouts/ → Định nghĩa cấu trúc trang nhất quán (ví dụ: Header, Footer).
+src/pages/ → Chứa các trang dựa trên (route) của ứng dụng. 
+src/styles/ → Chứa CSS toàn cục, bao gồm các kiểu dáng mà các trang khác sẽ tuân theo.
+src/utils/ → Chứa các hàm utils (hàm tiện ích dùng lại), hằng số để tái sử dụng.

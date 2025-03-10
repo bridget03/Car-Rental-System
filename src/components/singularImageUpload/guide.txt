@@ -1,0 +1,29 @@
+Documentation:
+How to use CustomImageInput?
+Required: Sử dụng Formik
+
+- Setup như sau
+import CustomImageInput from "@/components/singularImageUpload";
+ 
+<Field name="file" component={CustomImageInput} className={styles.test} /> 
+
+0. Với name = tên trường, component bắt buộc phải lấy CustomImageInput. 
+
+1. Data của field là url ảnh (string);
+
+2. Muốn custom css thì dùng className
+
+vd: tăng kích cỡ cho upload:
+.test > div {
+    width: 300px;
+    height: 300px;
+}
+
+3. Sử dụng cloudinaryFolder rồi set tên folder nếu như mà muốn sort data theo tên. Có thể để dynamic name để dễ track, kiểu: (users/${userId})
+
+Chưa có responsive :>
+
+Read more:
+Data flow: Client upload
+Image get uploaded on client => Fetch image link => Send image link to backend server to save.
+

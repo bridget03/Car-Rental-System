@@ -1,0 +1,317 @@
+Check for available car in timespan
+GET
+http://localhost:3000/api/bookings/available?
+
+    http://localhost:3000/api/bookings/available?pickupDate=2025-03-01T10:0&dropOffDate=2025-03-01T10:01&location=b
+    >> "Invalid date format for pickupDate: 2025-03-01T10:0"
+
+    http://localhost:3000/api/bookings/available?pickupDate=2025-03-01T10:01&dropOffDate=2025-03-01T10:00&location=b
+    >> "error": "Drop-off date must be later than Pick-up date, please try again."
+
+    http://localhost:3000/api/bookings/available?pickupDate=2025-03-01T10:00&dropOffDate=2025-03-01T10:01&location=
+    >> "error": "Missing required parameters: location"
+
+    http://localhost:3000/api/bookings/available?pickupDate=2025-02-20T09:01&dropOffDate=2025-02-20T09:02&location=Hoan%20Kiem&page=1&limit=6&carBrand=Madara
+    >> Success..
+
+POST
+http://localhost:3000/api/bookings
+    {
+        "carId": "1",
+        "pickupDate": "2025-02-20T10:00",
+        "dropOffDate": "2025-02-22T18:00",
+        "pickupLocation": "Cau Giay, Hanoi",
+        "driverInformation": {
+        "name": "Nguyen Van A",
+        "phone": "+0987654321",
+        "nationalID": "123456789",
+        "dateOfBirth": "1990-05-15",
+        "email": "nguyenvana@example.com",
+        "drivingLicense": "0123456789",
+        "address": {
+            "city": "Hanoi",
+            "district": "Hoan Kiem",
+            "ward": "Hang Trong",
+            "houseNumberStreet": "12 Ly Thai To"
+        }
+        },
+        "renterInformation": {
+        "name": "Tran Thi B",
+        "phone": "+0912345678",
+        "nationalID": "987654321",
+        "dateOfBirth": "1988-08-10",
+        "email": "tranthib@example.com",
+        "drivingLicense": "0123456789",
+        "address": {
+            "city": "Hanoi",
+            "district": "Hoan Kiem",
+            "ward": "Hang Trong",
+            "houseNumberStreet": "12 Ly Thai To"
+        }
+        },
+        "paymentMethod": "wallet"
+    }
+    >> Success..
+    >>>> "error": "Car with id: 1 is not available from 2025-02-20T10:00 to 2025-02-22T18:00, please try again"
+    >>>> "error": "Insufficient balance, your current balance: 2400000.00. The deposit price is 222200000. Please top up and try again"
+
+    {
+        "carId": "1",
+        "pickupDate": "2025-02-20T10:00",
+        "dropOffDate": "2025-02-22T18:00",
+        "paymentMethod": "bankTransfer"
+    }
+    >> "error": "Missing required parameters: pickupLocation, driverInformation"
+
+    {
+        "carId": "1",
+        "pickupDate": "2025-02-20T10:00",
+        "dropOffDate": "2025-02-22T18:00",
+        "pickupLocation": "aaabbb",
+        "driverInformation": {
+        ...
+        },
+        ...
+        "paymentMethod": "bankTransfer"
+    }
+    >> "error": "Car with id: 1 is at [Cau Giay, Hanoi], is not available at location: aaabbb"
+
+    {
+        "carId": "1",
+        "pickupDate": "2025-02-20T10:00:00",
+        "dropOffDate": "2025-02-22T18:00:00",
+        "pickupLocation": "aaabbb",
+        "driverInformation": {
+        ...
+        },
+        ...
+        "paymentMethod": "bankTransfer"
+    }
+    >> "errors": [
+            "Invalid date format for pickupDate: 2025-02-20T10:00:00, must follow YYYY-MM-DDTHH:MM",
+            "Invalid date format for dropOffDate: 2025-02-22T18:00:00, must follow YYYY-MM-DDTHH:MM"
+        ]
+
+    {
+        "carId": "1",
+        "pickupDate": "2025-02-20T10:00",
+        "dropOffDate": "2025-02-22T18:00",
+        "pickupLocation": "Cau Giay, Hanoi",
+        "driverInformation": {
+        ...
+        }
+        ...
+        "paymentMethod": "abcc"
+    }
+
+    >> "error": "Invalid payment method: abcc, it's either wallet or bankTransfer or cash"
+
+POST
+http://localhost:3000/api/bookings/[id]
+    {
+        "driverInformation": {
+            "name": "Nguyen Van A",
+            "phone": "+0987654321",
+            "nationalID": "123456789",
+            "dateOfBirth": "1990-05-15",
+            "email": "abc@gmail.com",
+            "drivingLicense": "0123456789",
+            "address": {
+                "city": "Hanoi",
+                "district": "Hoan Kiem",
+                "ward": "Hang Trong",
+                "houseNumberStreet": "12 Ly Thai To"
+            }
+        },
+        "renterInformation": {
+            "name": "Tran Thi B",
+            "phone": "+0912345678",
+            "nationalID": "987654321",
+            "dateOfBirth": "1988-08-10",
+            "email": "tranthib@example.com",
+            "drivingLicense": "1010101010",
+            "address": {
+                "city": "Hanoi",
+                "district": "Hoan Kiem",
+                "ward": "Hang Trong",
+                "houseNumberStreet": "12 Ly Thai To"
+            }
+        }
+    }
+    >> Success
+    >>>> "error": "Cannot update booking with current status: completed, only allowed to update when booking status is either confirmed or pendingDeposit"
+
+
+POST
+http://localhost:3000/api/bookings/cancel/[id]
+    Precondition: Signed in
+    >> {
+        "message": "Booking cancelled successfully, if user was using wallet, money is refunded",
+        "booking": {
+            "id": "20250220-000002",
+            "carId": "2",
+            ...
+        }
+    }
+    >>>> "error": "Cannot cancel a booking that is inProgress or Completed or pendingPayment. Current status: inProgress"
+    
+POST
+http://localhost:3000/api/bookings/confirmpickup/[id]
+    Precondition: Signed in
+    >> {
+        "message": "Booking status updated to inProgress",
+        "booking": {
+            "id": "20250219-000001",
+            "carId": "1",
+            "userId": "5",
+            "pickupDate": "2025-02-20T10:00",
+            "dropOffDate": "2025-02-22T18:00",
+            "pickupLocation": "Cau Giay, Hanoi",
+            "totalPrice": 2700000,
+            "driverInformation": {
+                "name": "Nguyen Van A",
+                "phone": "+0987654321",
+                "nationalID": "123456789",
+                "dateOfBirth": "1990-05-15",
+                "email": "abc@gmail.com",
+                "drivingLicense": "0123456789",
+                "address": {
+                    "city": "Hanoi",
+                    "district": "Hoan Kiem",
+                    "ward": "Hang Trong",
+                    "houseNumberStreet": "12 Ly Thai To"
+                }
+            },
+            "renterInformation": {
+                "name": "Tran Thi B",
+                "phone": "+0912345678",
+                "nationalID": "987654321",
+                "dateOfBirth": "1988-08-10",
+                "email": "tranthib@example.com",
+                "drivingLicense": "1010101010",
+                "address": {
+                    "city": "Hanoi",
+                    "district": "Hoan Kiem",
+                    "ward": "Hang Trong",
+                    "houseNumberStreet": "12 Ly Thai To"
+                }
+            },
+            "paymentMethod": "wallet",
+            "status": "inProgress"
+        }
+    }
+    >>>> "error": "Only allow to confirm pickup if status is confirmed. Current status: inProgress"
+
+GET
+http://localhost:3000/api/bookings/available/1?pickupDate=2025-02-18T10:00&dropOffDate=2025-02-19T18:00
+    Precondition: Signed in
+    >> 
+    {
+        "message": "Car is available",
+        "carAvailable": true,
+        "occupiedBookings": []
+    }
+
+    >>>> {
+    "message": "Car is not available between 2025-02-20T10:00 to 2025-02-21T18:00",
+    "carAvailable": false,
+    "occupiedBookings": [
+        {
+            "id": "20250219-000001",
+            "carId": "1",
+            "userId": "5",
+            "pickupDate": "2025-02-20T10:00",
+            "dropOffDate": "2025-02-22T18:00",
+            "pickupLocation": "Cau Giay, Hanoi",
+            "totalPrice": 2700000,
+            "driverInformation": {
+                "name": "Nguyen Van A",
+                "phone": "+0987654321",
+                "nationalID": "123456789",
+                "dateOfBirth": "1990-05-15",
+                "email": "abc@gmail.com",
+                "drivingLicense": "0123456789",
+                "address": {
+                    "city": "Hanoi",
+                    "district": "Hoan Kiem",
+                    "ward": "Hang Trong",
+                    "houseNumberStreet": "12 Ly Thai To"
+                }
+            },
+            "renterInformation": {
+                "name": "Tran Thi B",
+                "phone": "+0912345678",
+                "nationalID": "987654321",
+                "dateOfBirth": "1988-08-10",
+                "email": "tranthib@example.com",
+                "drivingLicense": "1010101010",
+                "address": {
+                    "city": "Hanoi",
+                    "district": "Hoan Kiem",
+                    "ward": "Hang Trong",
+                    "houseNumberStreet": "12 Ly Thai To"
+                }
+            },
+            "paymentMethod": "wallet",
+            "status": "inProgress"
+        }
+    ]
+}
+
+POST
+http://localhost:3000/api/bookings/returncar/[id]
+    >> 
+    {
+        "message": "Returning car succeed! Booking status from inProgress updated to completed",
+        "message2": "User balance before: 984999999, after: 982499999",
+        "booking": {
+            "id": "20250219-000001",
+            "carId": "1",
+            "userId": "7",
+            "pickupDate": "2025-02-20T10:00",
+            "dropOffDate": "2025-02-22T18:00",
+            "pickupLocation": "Cau Giay, Hanoi",
+            "totalPrice": 2700000,
+            "driverInformation": {
+                "name": "Nguyen Van A",
+                "phone": "+0987654321",
+                "nationalID": "123456789",
+                "dateOfBirth": "1990-05-15",
+                "email": "abc@gmail.com",
+                "drivingLicense": "0123456789",
+                "address": {
+                    "city": "Thành phố Hà Nội",
+                    "district": "Quận Hoàn Kiếm",
+                    "ward": "Phường Cửa Đông",
+                    "houseNumberStreet": "123 Main Streets hehe"
+                }
+            },
+            "renterInformation": {
+                "name": "Tran Thi B",
+                "phone": "+0912345678",
+                "nationalID": "987654321",
+                "dateOfBirth": "1988-08-10",
+                "email": "tranthib@example.com",
+                "drivingLicense": "https://res.cloudinary.com/di24e9bcc/raw/upload/v1740035071/rentcar/all/Group_02_Meeting_Minutes_14_Feb.pdf_tgltsg.pdf",
+                "address": {
+                    "city": "Tỉnh Cao Bằng",
+                    "district": "Huyện Nguyên Bình",
+                    "ward": "Xã Phan Thanh",
+                    "houseNumberStreet": "123 Main Street"
+                }
+            },
+            "paymentMethod": "wallet",
+            "status": "completed"
+        },
+        "userBalanceBefore": 984999999,
+        "wallet": 982499999
+    }
+    >>>> "error": "Only allow to return car when booking status is inProgress. Current status: confirmed"
+    
+    >>>> {
+        "error": "Insufficient wallet balance to return car. Current balance: 0. Deduct amount: 2500000 Please add more money to your wallet.",
+        "deduct": 2500000,
+        "userWallet": 0
+    }
+
+    >>>>

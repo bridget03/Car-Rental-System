@@ -1,0 +1,222 @@
+.balance {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--white-text);
+}
+.balance-card {
+    background-color: var(--primary);
+    border-radius: 1rem;
+    padding: 4rem 3rem;
+    background-position: top;
+    background-size: cover;
+    transition: all 0.5s ease-in-out;
+    cursor: default;
+
+    &:hover {
+        background-position: bottom;
+        .underline {
+            width: 100%;
+        }
+    }
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1;
+    margin: 0 0 1rem 0;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.balance-display {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    width: fit-content;
+    transition: all 0.5s ease-in-out;
+    p {
+        margin: 1rem 0 0 0;
+    }
+}
+
+.underline {
+    transition: all 0.5s ease-in-out;
+
+    border: none;
+    border-top: 4px solid var(--white-text);
+    width: 0;
+    margin: 0.25rem 0 0 0;
+}
+
+.card-btn-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    button {
+        width: 100%;
+    }
+}
+.card-btn {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    transition: all 0.2s ease-out;
+    font-weight: bold;
+    background-color: rgb(from var(--foreground) r g b / 0.05);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+
+    &:hover {
+        filter: brightness(1.3);
+    }
+}
+
+.card-btn-primary {
+}
+
+.card-btn-secondary {
+}
+
+.transaction {
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    overflow-x: auto;
+    background-color: var(--background);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border: 1px solid rgba(from var(--foreground) r g b/.05);
+}
+
+.transaction-header {
+    display: flex;
+    min-width: 768px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-btn {
+    background-color: var(--primary);
+    color: var(--white-text);
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        filter: brightness(120%);
+    }
+}
+
+.transaction-table {
+    width: 100%;
+    min-width: 768px;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
+
+    th {
+        padding: 0.75rem 0;
+        padding-left: 1rem;
+        text-align: left;
+        background-color: var(--primary);
+        color: var(--white-text);
+    }
+
+    td {
+        padding: 1rem 0;
+        padding-left: 1rem;
+        text-align: left;
+    }
+
+    th + th,
+    td + td {
+        border-left: 1px solid var(--border);
+    }
+
+    td.even {
+        background-color: rgba(from var(--foreground) r g b/.1);
+    }
+}
+
+.date-input {
+    border-radius: 0.25rem;
+    border: 1px solid var(--border);
+    padding: 0.75rem;
+    font-family: inherit;
+    background-color: var(--background);
+    color: var(--foreground);
+
+    &:focus {
+        outline: 2px solid var(--primary);
+    }
+}
+
+.divider {
+    width: 100%;
+    margin: 1rem 0;
+    border: 1px solid var(--border);
+    border-top: 0;
+}
+
+.modalMessage {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    strong {
+        font-size: 1.2rem;
+    }
+    label {
+        color: rgb(from var(--foreground) r g b / 0.6);
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.selectBox {
+    width: 100%;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(from var(--foreground) r g b / 0.3);
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    outline: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+        outline: 2px solid var(--primary);
+    }
+    option {
+        background-color: var(--background);
+        margin: none;
+        border: none;
+    }
+}
+
+.pagination {
+    min-width: 768px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .transaction {
+        border: 1px solid var(--border);
+    }
+}

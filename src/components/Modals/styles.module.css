@@ -1,0 +1,94 @@
+.modal {
+    background-color: var(--background);
+    color: var(--foreground);
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+    width: fit-content;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.closeBtn {
+    background-color: transparent;
+    border: none;
+    color: var(--foreground);
+    opacity: 0.5;
+    transition: all 0.2s linear;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+.content {
+    margin-bottom: 2rem;
+}
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn {
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary);
+    color: var(--white-text);
+    border-radius: 0.25rem;
+    border: none;
+    text-transform: capitalize;
+    transition: all 0.2s linear;
+    font-size: 1rem;
+    width: 30%;
+    font-weight: bold;
+    &:hover {
+        filter: brightness(1.3);
+    }
+}
+
+.btnSecondary {
+    background-color: rgb(from var(--foreground) r g b / 0.2);
+    color: var(--foreground);
+    &:hover {
+        filter: brightness(1.3);
+    }
+}
+
+.selectBox {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(from var(--foreground) r g b / 0.3);
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    outline: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+        outline: 2px solid var(--primary);
+    }
+    option {
+        background-color: var(--background);
+        margin: none;
+        border: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .modal {
+        border: 1px solid var(--border);
+    }
+}

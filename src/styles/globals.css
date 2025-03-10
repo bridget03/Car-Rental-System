@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+    --background: #fcfcfc;
+    --base: #efefef;
+    --foreground: #171717;
+    --secondary: rgba(from var(--foreground) r g b / 0.6);
+    --third: #1c1c1c;
+    --white-text: #e8e8e8;
+    --primary: #ff5722;
+    --dark-text: #1c1c1c;
+    --highlight-text: rgb(0, 0, 0);
+    --item-background: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --border: rgba(from var(--foreground) r g b/.2);
+    --success: #4caf50;
+    --error: #f44336;
+    --bg-info: #efefef;
+    --bg-info-900: #dcdcdc;
+    --bg-info-800: #bdbdbd;
+    --bg-info-700: #989898;
+    --max-width: 1300px;
+    --default-font: "Roboto", sans-serif;
+
+    font-size: 12px;
+    @media screen and (min-width: 768px) {
+        font-size: 14px;
+    }
+    @media screen and (min-width: 1024px) {
+        font-size: 16px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #1a1a1a;
+        --base: #141414;
+        --foreground: #ededed;
+        --third: #787878;
+        --item-background: #1c1c1c;
+        --shadow: rgba(255, 255, 255, 0.1);
+        --highlight-text: #0ff;
+        --shadow: rgba(0, 0, 0, 0.1);
+
+        --bg-info: #252525;
+        --bg-info-900: #3d3d3d;
+        --bg-info-800: #454545;
+        --bg-info-700: #4f4f4f;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-color: var(--primary) var(--background);
+    scrollbar-width: thin;
+    font-family: inherit;
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: "Roboto", sans-serif;
+    padding-top: 90px;
+}
